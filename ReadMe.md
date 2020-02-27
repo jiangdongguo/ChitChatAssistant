@@ -5,7 +5,7 @@
 **RASA 开发中文指南系列博文：**
 
 - [Rasa中文聊天机器人开发指南(1)：入门篇](https://jiangdg.blog.csdn.net/article/details/104328946)
-- [Rasa中文聊天机器人开发指南(2)：NLU篇](https://jiangdg.blog.csdn.net/article/details/104328946)
+- [Rasa中文聊天机器人开发指南(2)：NLU篇](https://blog.csdn.net/AndrExpert/article/details/104530994)
 - Rasa中文聊天机器人开发指南(3)：Core篇
 - Rasa中文聊天机器人开发指南(4)：RasaX与模型评估
 - Rasa中文聊天机器人开发指南(5)：浅析Mitie、spaCy和CRF实体识别器
