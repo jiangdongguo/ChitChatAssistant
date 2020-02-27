@@ -15,6 +15,39 @@ from requests import (
 )
 
 
+class PhoneForm(FormAction):
+
+    def name(self) -> Text:
+        """Unique identifier of the form"""
+
+        return "phone_form"
+
+    @staticmethod
+    def required_slots(tracker: Tracker) -> List[Text]:
+        """A list of required slots that the form has to fill"""
+
+        return ["phone_number", "business"]
+
+    def submit(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+    ) -> List[Dict]:
+        """Define what the form has to do
+            after all required slots are filled"""
+        business = tracker.get_slot('business')
+        number = tracker.get_slot('phone_number')
+
+        if business == "机主":
+            dispatcher.utter_message("您要查询的号码{}属于隔壁老蒋".format(number))
+        elif business == "余额":
+            dispatcher.utter_message("您要查询的号码{}账户余额为66666元".format(number))
+        else:
+            dispatcher.utter_message("暂不支持查询{}业务".format(business))
+        return [Restarted()]
+
+
 class WeatherForm(FormAction):
 
     def name(self) -> Text:

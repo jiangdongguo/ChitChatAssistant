@@ -17,6 +17,11 @@ import logging
 app = Flask(__name__)
 
 
+@app.route('/', methods=['GET', 'POST'])
+def test():
+    return"测试"
+
+
 @app.route('/ai', methods=['GET', 'POST'])
 def webToBot():
     """
@@ -41,20 +46,27 @@ def requestRasabotServer(userid, content):
     :return:  json格式响应数据
     """
     params = {'sender': userid, 'message': content}
-    botIp = '127.0.0.1'
+    # botIp = '127.0.0.1'
+    # botPort = '5005'
+    botIp = '192.168.0.108'
     botPort = '5005'
+    # rasa使用rest channel
     # https://rasa.com/docs/rasa/user-guide/connectors/your-own-website/#rest-channels
     # POST /webhooks/rest/webhook
     rasaUrl = "http://{0}:{1}/webhooks/rest/webhook".format(botIp, botPort)
-    return requests.post(
+
+    reponse = requests.post(
         rasaUrl,
         data=json.dumps(params),
         headers={'Content-Type': 'application/json'}
     )
+    return reponse
 
 
 if __name__ == '__main__':
-    webIp = '127.0.0.1'
+    # webIp = '127.0.0.1'
+    # webPort = '8088'
+    webIp = '192.168.0.108'
     webPort = '8088'
 
     print("##### webIp={}, webPort={}".format(webIp, webPort))
@@ -69,6 +81,7 @@ if __name__ == '__main__':
 
     # 启动服务，开启多线程、debug模式
     # 浏览器访问http://127.0.0.1:8088/ai?content="你好"
+    # 或http://192.168.0.108:8088/ai?content="你好"
     app.run(
         host=webIp,
         port=int(webPort),

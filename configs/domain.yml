@@ -7,16 +7,23 @@ intents:
   - whoareyou
   - whattodo
   - request_weather
+  - request_phone_business
 
 slots:
   date-time:
     type: unfeaturized
   address:
     type: unfeaturized
+  phone_number:
+    type: unfeaturized
+  business:
+    type: unfeaturized
 
 entities:
   - date-time
   - address
+  - phone_number
+  - business
 
 actions:
   - utter_answer_affirm
@@ -28,10 +35,13 @@ actions:
   - utter_answer_whattodo
   - utter_ask_date-time
   - utter_ask_address
+  - utter_ask_phone_number
+  - utter_ask_business
   - action_default_fallback
 
 forms:
   - weather_form
+  - phone_form
 
 responses:
   utter_answer_affirm:
@@ -71,6 +81,12 @@ responses:
 
   utter_ask_address:
     - text: "请问您要查下哪里的天气？"
+
+  utter_ask_phone_number:
+    - text: "请问您要查的电话号码是多少？"
+
+  utter_ask_business:
+    - text: "请问您要查询什么业务呢？"
 
   utter_default:
     - text: "没听懂，请换种说法吧~"

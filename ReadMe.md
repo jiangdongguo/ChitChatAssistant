@@ -5,9 +5,13 @@
 **RASA 开发中文指南系列博文：**
 
 - [Rasa中文聊天机器人开发指南(1)：入门篇](https://jiangdg.blog.csdn.net/article/details/104328946)
-- Rasa中文聊天机器人开发指南(2)：NLU篇
+- [Rasa中文聊天机器人开发指南(2)：NLU篇](https://jiangdg.blog.csdn.net/article/details/104328946)
 - Rasa中文聊天机器人开发指南(3)：Core篇
-- Rasa中文聊天机器人开发指南(4)：RasaX篇
+- Rasa中文聊天机器人开发指南(4)：RasaX与模型评估
+- Rasa中文聊天机器人开发指南(5)：浅析Mitie、spaCy和CRF实体识别器
+- Rasa中文聊天机器人开发指南(6)：浅析Mitie、Sklearn和Embedding意图分类器
+
+**注：本系列博客翻译自[Rasa官方文档](https://rasa.com/docs/rasa/)，并融合了自己的理解和项目实战，同时对文档中涉及到的技术点进行了一定程度的扩展，目的是为了更好的理解Rasa工作机制和相关技术要点。与本系列博文配套的项目GitHub地址：[ChitChatAssistant](https://github.com/jiangdongguo/ChitChatAssistant)，欢迎`star`和`issues`，我们共同讨论、学习！**
 
 
 
@@ -57,9 +61,18 @@ pip install jieba
 
 # 2. 训练模型  
 
-&emsp;当所有样本和配置文件准备好后，接下来就是训练模型了，打开命令终端执行下面的命令，该命令会同时训练NLU和Core模型，具体如下：
+&emsp;当所有样本和配置文件准备好后，接下来就是训练模型了，打开命令终端执行下面的命令，该命令会同时训练NLU和Core模型。
+
+- 使用MITIE
+
 ```shell
 python -m rasa train --config configs/config.yml --domain configs/domain.yml --data data/
+```
+
+- 使用Supervised_Embedding
+
+```bash
+python -m rasa train --config configs/zh_jieba_supervised_embeddings_config.yml --domain configs/domain.yml --data data/
 ```
 
 # 3. 运行服务  
@@ -91,23 +104,31 @@ Python -m rasa run actions --port 5055 --actions actions --debug
 python server.py
 ```
 
-当**Rasa Server**、**Action Server**和**Server.py**运行后，在浏览器输入：
+当**Rasa Server**、**Action Server**和**Server.py**运行后，在浏览器输入测试：
 
 ` http://127.0.0.1:8088/ai?content="查询广州明天的天气"`
 
-返回的结果为：
+终端调用效果为：
 
-![入门7](https://img-blog.csdnimg.cn/20200215154508497.png)
+![](https://img-blog.csdnimg.cn/20200227153932228.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FuZHJFeHBlcnQ=,size_16,color_FFFFFF,t_70)
+
+
 
 # 4. 更新日志
 
 
 
-**（1）V1.0.0.2020.02.15**
+**（1）V1.0.2020.02.15**
 
 - 创建项目，模型训练成功；
 - 前端访问Rasa服务器正常响应；
 - 对接图灵闲聊机器人、心知天气API，便于测试；
+
+**（2）V1..1.2020.02.27**
+
+- 优化NLU样本，尝试使用同义词、正则、查找表；
+- 改进supervised_embeddings，实体提取和意图识别明显提高，训练速度加快很多；
+- 完成`Rasa中文聊天机器人开发指南(2)：NLU篇`文章撰写；
 
 
 
