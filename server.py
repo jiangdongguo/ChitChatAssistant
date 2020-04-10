@@ -46,9 +46,7 @@ def requestRasabotServer(userid, content):
     :return:  json格式响应数据
     """
     params = {'sender': userid, 'message': content}
-    # botIp = '127.0.0.1'
-    # botPort = '5005'
-    botIp = '192.168.0.108'
+    botIp = '127.0.0.1'
     botPort = '5005'
     # rasa使用rest channel
     # https://rasa.com/docs/rasa/user-guide/connectors/your-own-website/#rest-channels
@@ -64,9 +62,7 @@ def requestRasabotServer(userid, content):
 
 
 if __name__ == '__main__':
-    # webIp = '127.0.0.1'
-    # webPort = '8088'
-    webIp = '192.168.0.108'
+    webIp = '127.0.0.1'
     webPort = '8088'
 
     print("##### webIp={}, webPort={}".format(webIp, webPort))
@@ -81,7 +77,6 @@ if __name__ == '__main__':
 
     # 启动服务，开启多线程、debug模式
     # 浏览器访问http://127.0.0.1:8088/ai?content="你好"
-    # 或http://192.168.0.108:8088/ai?content="你好"
     app.run(
         host=webIp,
         port=int(webPort),

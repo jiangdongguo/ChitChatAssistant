@@ -7,22 +7,38 @@ intents:
   - whoareyou
   - whattodo
   - request_weather
-  - request_phone_business
+  - request_number
+  - inform
+  - inform_business
+  - stop
+  - chitchat
+
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 60
 
 slots:
-  date-time:
+  date_time:
     type: unfeaturized
+    auto_fill: false
   address:
     type: unfeaturized
-  phone_number:
+    auto_fill: false
+  type:
     type: unfeaturized
+    auto_fill: false
+  number:
+    type: unfeaturized
+    auto_fill: false
   business:
     type: unfeaturized
+    auto_fill: false
 
 entities:
-  - date-time
+  - date_time
   - address
-  - phone_number
+  - type
+  - number
   - business
 
 actions:
@@ -33,15 +49,16 @@ actions:
   - utter_answer_thanks
   - utter_answer_whoareyou
   - utter_answer_whattodo
-  - utter_ask_date-time
+  - utter_ask_date_time
   - utter_ask_address
-  - utter_ask_phone_number
+  - utter_ask_number
   - utter_ask_business
+  - utter_ask_type
   - action_default_fallback
 
 forms:
   - weather_form
-  - phone_form
+  - number_form
 
 responses:
   utter_answer_affirm:
@@ -76,17 +93,38 @@ responses:
   utter_answer_whattodo:
     - text: "您好！很高兴为您服务，我目前只支持查询天气哦。"
 
-  utter_ask_date-time:
+  utter_ask_date_time:
     - text: "请问您要查询哪一天的天气？"
 
   utter_ask_address:
     - text: "请问您要查下哪里的天气？"
 
-  utter_ask_phone_number:
-    - text: "请问您要查的电话号码是多少？"
+  utter_ask_number:
+    - text: "请问您要查的{type}号码是多少？"
 
   utter_ask_business:
     - text: "请问您要查询什么业务呢？"
 
   utter_default:
     - text: "没听懂，请换种说法吧~"
+
+  utter_ask_continue:
+    - text: "请问您还要继续吗?"
+
+  utter_noworries:
+    - text: "不用客气 :)"
+    - text: "没事啦"
+    - text: "不客气哈，都是老朋友了 :)"
+
+  utter_wrong_business:
+    - text: "当前还不支持{business}业务，请重新输入。"
+
+  utter_wrong_type:
+    - text: "当前还不支持查询{type}。"
+
+  utter_wrong_number:
+    - text: "您输入的{number}有误，请重新输入。"
+
+  utter_chitchat:
+    - text: "呃呃呃呃呃"
+    - text: "您这是在尬聊吗？"

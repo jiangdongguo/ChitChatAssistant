@@ -14,8 +14,8 @@ pipeline:
 - name: "EmbeddingIntentClassifier"
 
 policies:
-  - name: KerasPolicy
-    epochs: 500
+  - name: EmbeddingPolicy
+    epochs: 100
     max_history: 5
   - name: FallbackPolicy
     fallback_action_name: 'action_default_fallback'
