@@ -20,7 +20,7 @@ colorclass==2.2.0
 coloredlogs==10.0
 colorhash==1.0.2
 contextvars==2.4
-cryptography==2.9
+cryptography==3.2
 cycler==0.10.0
 decorator==4.4.2
 dnspython==1.16.0
