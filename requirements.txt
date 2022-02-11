@@ -77,7 +77,7 @@ opt-einsum==3.2.0
 packaging==19.0
 pika==1.1.0
 prompt-toolkit==2.0.10
-protobuf==3.11.3
+protobuf==3.15.0
 psycopg2-binary==2.8.4
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
