@@ -45,7 +45,7 @@ hstspreload==2020.3.31
 html5lib==0.9999999
 httplib2==0.17.1
 httptools==0.1.1
-httpx==0.9.3
+httpx==0.23.0
 humanfriendly==8.1
 hyperframe==5.2.0
 idna==2.8
