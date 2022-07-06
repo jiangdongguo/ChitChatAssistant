@@ -42,7 +42,7 @@ h2==3.2.0
 h5py==2.10.0
 hpack==3.0.0
 hstspreload==2020.3.31
-html5lib==0.9999999
+html5lib==0.999999999
 httplib2==0.17.1
 httptools==0.1.1
 httpx==0.9.3
